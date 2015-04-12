@@ -6,9 +6,8 @@ angular.module('coursesApp', []).controller(
 			};
 			var host = $location.host().toString();
 			var port = $location.port().toString();
-			var path = $location.path().toString();
-			var path1 = "http://" + host + ":" + port + "/courses5/rest/api/courses";
-			var path2 = "http://" + host + ":" + port + "/courses5/rest/api/addcourse";
+			var path1 = "http://" + host + ":" + port + _contextPath + "/rest/api/courses";
+			var path2 = "http://" + host + ":" + port + _contextPath + "/rest/api/addcourse";
 			$http.get(path1)
 					.success(function(response) {
 						$scope.courses = response.course;

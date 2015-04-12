@@ -17,11 +17,17 @@ public class CoursesRestController {
 
 	@Autowired
 	CoursesService coursesService;
+	
+	boolean isNotStarted = true;
 
 	@GET
 	@Path("/courses")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Course> getCourses() {
+		if(isNotStarted) {
+		coursesService.saveCourses();
+		isNotStarted = false;
+		}
 		List<Course> courses = coursesService.getCourses();
 		return courses;
 	}
